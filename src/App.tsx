@@ -16,7 +16,7 @@ function App() {
   return (
     <main className={opened ? "page opened" : "page"}>
       <section className="hero" onClick={() => setOpened(true)}>
-        <img src="/alinur/photos/gun2.jpg" alt="background" className="hero-image"></img>
+        <img src={`${import.meta.env.BASE_URL}/alinur/photos/gun2.jpg`} alt="background" className="hero-image"></img>
 
         <div className="hero-text">
           <h1>Alinur Abralin</h1>
@@ -27,7 +27,11 @@ function App() {
         <div className="gallery">
             {artworks.map((src, index) => (
               <div className="artwork" key={src} style={{ transitionDelay: `${0.3 + index * 0.15}s` }}>
-                <img src={src} alt={`Artwork ${index + 1}`}></img>
+                <img
+                  src={`${import.meta.env.BASE_URL}${src}`}
+                  alt={`Artwork ${index + 1}`}
+                  loading="lazy"
+                />
               </div>
             ))}
         </div>
