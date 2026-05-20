@@ -5,18 +5,18 @@ function App() {
   const [opened, setOpened] = useState(false);
 
   const artworks = [
-    "/photos/friend1.jpg",
-    "/photos/grey1.jpg",
-    "/photos/grey2.jpg",
-    "/photos/julia1.jpg",
-    "/photos/julia2.jpg",
-    "/photos/gun1.jpg"
+    "/alinur/photos/friend1.jpg",
+    "/alinur/photos/grey1.jpg",
+    "/alinur/photos/grey2.jpg",
+    "/alinur/photos/julia1.jpg",
+    "/alinur/photos/julia2.jpg",
+    "/alinur/photos/gun1.jpg"
   ];
 
   return (
     <main className={opened ? "page opened" : "page"}>
       <section className="hero" onClick={() => setOpened(true)}>
-        <img src="/photos/gun2.jpg" alt="background" className="hero-image"></img>
+        <img src="/alinur/photos/gun2.jpg" alt="background" className="hero-image"></img>
 
         <div className="hero-text">
           <h1>Alinur Abralin</h1>
