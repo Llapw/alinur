@@ -5,8 +5,8 @@ function App() {
   const [opened, setOpened] = useState(false);
 
   const artworks = [
-    "/alinur/photos/friend1.jpg",
-    "/alinur/photos/grey1.jpg",
+    "/photos/friend1.jpg",
+    "photos/grey1.jpg",
     "/alinur/photos/grey2.jpg",
     "/alinur/photos/julia1.jpg",
     "/alinur/photos/julia2.jpg",
