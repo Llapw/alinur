@@ -6,17 +6,17 @@ function App() {
 
   const artworks = [
     "/photos/friend1.jpg",
-    "photos/grey1.jpg",
-    "/alinur/photos/grey2.jpg",
-    "/alinur/photos/julia1.jpg",
-    "/alinur/photos/julia2.jpg",
-    "/alinur/photos/gun1.jpg"
+    "/photos/grey1.jpg",
+    "/photos/grey2.jpg",
+    "/photos/julia1.jpg",
+    "/photos/julia2.jpg",
+    "/photos/gun1.jpg"
   ];
 
   return (
     <main className={opened ? "page opened" : "page"}>
       <section className="hero" onClick={() => setOpened(true)}>
-        <img src={`${import.meta.env.BASE_URL}/alinur/photos/gun2.jpg`} alt="background" className="hero-image"></img>
+        <img src={`${import.meta.env.BASE_URL}/photos/gun2.jpg`} alt="background" className="hero-image"></img>
 
         <div className="hero-text">
           <h1>Alinur Abralin</h1>
