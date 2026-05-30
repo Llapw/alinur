@@ -1,42 +1,23 @@
-import { useState } from "react";
 import "./App.css";
 
+import { Routes, Route } from "react-router-dom";
+import Home from "./routes/Home";
+import AboutMe from "./routes/AboutMe";
+import Contact from "./routes/Contact";
+import Landing from "./routes/Landing";
+import Layout from "./routes/Layout"
+
 function App() {
-  const [opened, setOpened] = useState(false);
-
-  const artworks = [
-    "/photos/friend1.jpg",
-    "/photos/grey1.jpg",
-    "/photos/grey2.jpg",
-    "/photos/julia1.jpg",
-    "/photos/julia2.jpg",
-    "/photos/gun1.jpg"
-  ];
-
   return (
-    <main className={opened ? "page opened" : "page"}>
-      <section className="hero" onClick={() => setOpened(true)}>
-        <img src={`${import.meta.env.BASE_URL}/photos/gun2.jpg`} alt="background" className="hero-image"></img>
+    <Routes>
+      <Route path="/alinur/" element={<Landing />} />
 
-        <div className="hero-text">
-          <h1>Alinur Abralin</h1>
-        </div>
-      </section>
-
-      <section className="gallery-panel">
-        <div className="gallery">
-            {artworks.map((src, index) => (
-              <div className="artwork" key={src} style={{ transitionDelay: `${0.3 + index * 0.15}s` }}>
-                <img
-                  src={`${import.meta.env.BASE_URL}${src}`}
-                  alt={`Artwork ${index + 1}`}
-                  loading="lazy"
-                />
-              </div>
-            ))}
-        </div>
-      </section>
-    </main>
+      <Route element={<Layout />}>
+        <Route path="/alinur/home" element={<Home />} />
+        <Route path="/alinur/about" element={<AboutMe />} />
+        <Route path="/alinur/contact" element={<Contact />} />
+      </Route>
+    </Routes>
   );
 }
 

@@ -2,92 +2,459 @@
   box-sizing: border-box;
 }
 
-body{
-  margin: 0;
-  font-family: "Helvetica", sans-serif;
-  overflow: hidden;
+html,
+body,
+#root {
+  min-height: 100%;
 }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: white;
+  color: #222;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+a {
+  color: inherit;
+}
+
+/* =========================
+   PAGE
+========================= */
 
 .page {
-  width: 100%;
   min-height: 100vh;
+  background: white;
 }
 
-.hero{
+/* =========================
+   LANDING / HERO
+========================= */
+
+.hero {
   position: fixed;
   inset: 0;
   cursor: pointer;
   overflow: hidden;
+  z-index: 1;
 }
 
 .hero-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-.hero-text{
-  display: flex;
-  flex-direction: column;
+/* dark overlay */
+.hero::after {
+  content: "";
   position: absolute;
   inset: 0;
-  color: white;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.hero-text {
+  position: absolute;
+  left: 60px;
+  bottom: 60px;
   z-index: 2;
-  align-items: center;
-  justify-content: center;
+  color: white;
 }
 
 .hero-text h1 {
+  margin: 0;
   font-size: 64px;
-  font-weight: 700;
-  margin-bottom: 0;
+  font-weight: 800;
+  letter-spacing: 3px;
 }
 
-.gallery-panel{
-  position: fixed;
-  inset: 0;
-  background: #f7f4ef;
-  z-index: 10;
-
-  transform: translateY(100%);
-  transition: transform 0.7s ease;
-
-  padding: 80px;
-  overflow-y: auto;
+.hero-text p {
+  margin-top: 12px;
+  font-size: 18px;
+  opacity: 0.85;
 }
 
-.page.opened .gallery-panel {
-  transform: translateY(0);
-}
+/* =========================
+   HEADER
+========================= */
 
-.gallery-title{
-  text-align: center;
-  font-size: 48px;
-  font-weight: 500;
-  margin: 0 0 60px;
-}
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
 
-.gallery{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
+  padding: 24px 40px;
+
+  background: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-.artwork{
-  opacity: 0;
-  transform: translateY(120px);
-  transition:
-    opacity 0.9s ease,
-    transform 0.9s ease;
+.header h1 {
+  grid-column: 1;
+  justify-self: start;
+
+  margin: 0;
+
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 2px;
 }
 
-.page.opened .artwork {
-  opacity: 1;
-  transform: translateY(0);
+/* =========================
+   DESKTOP NAV
+========================= */
+
+.desktop-nav {
+  grid-column: 2;
+  justify-self: center;
+
+  display: flex;
+  gap: 64px;
+  align-items: center;
 }
-.artwork img {
+
+.desktop-nav a {
+  position: relative;
+
+  text-decoration: none;
+  color: black;
+
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.desktop-nav a::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+
+  width: 0;
+  height: 1px;
+
+  background: black;
+  transition: width 0.25s ease;
+}
+
+.desktop-nav a:hover::after {
   width: 100%;
-  height: 420px;
+}
+
+/* =========================
+   MOBILE MENU BUTTON
+   sidebar removed for now
+========================= */
+
+.menu-button {
+  display: none;
+}
+
+.menu-button span {
+  display: none;
+}
+
+/* =========================
+   PORTFOLIO / HOME
+========================= */
+
+.portfolio-panel {
+  position: relative;
+  z-index: 1;
+
+  min-height: 100vh;
+  background: white;
+  overflow: visible;
+}
+
+.masonry-gallery {
+  column-count: 2;
+  column-gap: 16px;
+
+  padding: 48px 32px 32px;
+}
+
+.gallery-image {
+  width: 100%;
+  height: auto;
+  display: block;
+
+  margin-bottom: 16px;
+  break-inside: avoid;
+}
+
+/* =========================
+   ABOUT PAGE
+========================= */
+
+.about-page {
+  position: relative;
+  z-index: 1;
+
+  min-height: 100vh;
+  background: white;
+
+  padding: 120px 90px;
+  overflow: visible;
+}
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  column-gap: 160px;
+  align-items: start;
+}
+
+.about-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.about-image {
+  position: relative;
+  z-index: 1;
+
+  width: 300px;
+  height: auto;
+
   object-fit: cover;
   display: block;
+
+  margin-bottom: 36px;
+}
+
+.about-contact {
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+.about-contact p {
+  margin: 0;
+}
+
+.about-contact a {
+  color: black;
+  text-decoration: underline;
+}
+
+.about-text {
+  max-width: 900px;
+
+  font-size: 24px;
+  line-height: 1.55;
+  letter-spacing: 0.06em;
+}
+
+.about-text p {
+  margin: 0 0 48px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+  /* HERO */
+
+  .hero-text {
+    left: 32px;
+    bottom: 48px;
+  }
+
+  .hero-text h1 {
+    font-size: 42px;
+    letter-spacing: 2px;
+  }
+
+  .hero-text p {
+    font-size: 16px;
+  }
+
+  /* HEADER */
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 96px;
+    padding: 0 32px;
+
+    background: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  .header h1 {
+    font-size: 25px;
+    letter-spacing: 1.5px;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  /* MENU BUTTON */
+
+  .menu-button {
+    width: 45px;
+    height: 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 0;
+    border: none;
+    background: none;
+
+    cursor: pointer;
+  }
+
+  .menu-button span {
+    display: block;
+
+    width: 100%;
+    height: 3px;
+
+    background: black;
+  }
+
+  /* GALLERY */
+
+  .masonry-gallery {
+    column-count: 2;
+    column-gap: 16px;
+
+    padding: 32px 24px;
+  }
+
+  .gallery-image {
+    margin-bottom: 16px;
+  }
+
+  /* ABOUT */
+
+  .about-page {
+    position: relative;
+    z-index: 1;
+
+    min-height: 100vh;
+    padding: 48px 24px;
+
+    background: white;
+    overflow: visible;
+  }
+
+  .about-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .about-left {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .about-image {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+
+    display: block;
+    margin-bottom: 28px;
+  }
+
+  .about-contact {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .about-text {
+    max-width: none;
+
+    font-size: 20px;
+    line-height: 1.55;
+    letter-spacing: 0.04em;
+  }
+
+  .about-text p {
+    margin: 0 0 32px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 480px) {
+  .hero-text {
+    left: 24px;
+    bottom: 40px;
+  }
+
+  .hero-text h1 {
+    font-size: 34px;
+  }
+
+  .header {
+    height: 84px;
+    padding: 0 24px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .menu-button {
+    width: 38px;
+    height: 24px;
+  }
+
+  .menu-button span {
+    height: 2px;
+  }
+
+  .masonry-gallery {
+    column-count: 1;
+    padding: 24px 20px;
+  }
+
+  .about-page {
+    padding: 36px 20px;
+  }
+
+  .about-image {
+    max-width: 100%;
+  }
+
+  .about-contact {
+    font-size: 16px;
+  }
+
+  .about-text {
+    font-size: 18px;
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+  }
+
+  .about-text p {
+    margin-bottom: 28px;
+  }
 }
