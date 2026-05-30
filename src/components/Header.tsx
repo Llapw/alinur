@@ -1,21 +1,21 @@
-import { useState } from "react";
+// import { useState } from "react";
 import "../App.css";
 
-import Navbar from "./MobileNavbar";
+// import Navbar from "./MobileNavbar";
 import DesktopNav from "./DesktopNav";
 
 
 function Header(){
-    const [sidebarOpen, setSidebarOpen] = useState(false);
+    // const [sidebarOpen, setSidebarOpen] = useState(false);
 
 
-    const openSidebar = () => {
-        setSidebarOpen(true);
-    };
+    // const openSidebar = () => {
+    //     setSidebarOpen(true);
+    // };
 
-    const closeSidebar = () => {
-        setSidebarOpen(false);
-    };
+    // const closeSidebar = () => {
+    //     setSidebarOpen(false);
+    // };
     
     return(
         <header className="header">
@@ -25,7 +25,7 @@ function Header(){
             <button
                 className="menu-button"
                 aria-label="Open menu"
-                onClick={openSidebar}
+                // onClick={openSidebar}
             >
                 <span></span>
                 <span></span>
